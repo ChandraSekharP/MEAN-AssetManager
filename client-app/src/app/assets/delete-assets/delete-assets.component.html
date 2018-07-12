@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="how-to-use">
+    <h5>How To Use This Page</h5>
+    <ul class="row">
+      <li class="col-sm-6">Pagination will be visible after 6 records.</li>
+      <li class="col-sm-6"><b>Double confirmation to delete an asset from the store</b>.</li>
+      <li class="col-sm-6">Click on DELETE icon to select an asset that has to be deleted.</li>
+      <li class="col-sm-6">Click on TICK icon to delete selected asset from the store.</li>
+      <li class="col-sm-6">Click on CROSS icon to abort delete operation.</li>
+      <li class="col-sm-6">Type in some text in the search box to filter asset info.</li>
+      <li class="col-sm-6"><b>Sorting not available for table columns</b>.</li>
+    </ul>
+    <h1 class="col-sm-12">Delete Store Assets</h1>
+  </div>
+  <ngx-spinner
+    bdColor="rgba(255,255,255,0.7)"
+    size="medium"
+    color="red"
+    type="square-jelly-box">
+  </ngx-spinner>
+  <div class="row">
+    <div class="col-sm-12 asset-info-container" *ngIf="assetsList">
+      <div *ngIf="!showNoAssetsMessage; then showAssetsList else noAssetsFound"></div>
+      <ng-template #showAssetsList>
+        <div class="asset-info-utilities">
+          <span class="col-sm-3 total-assets">Total Assets in the Store: {{assetsList.length}}</span>
+          <span class="col-sm-9 search">
+            <input type="text" class="input-text" [value]="filterText" [placeholder]="filterPlaceholder" [formControl]="filterInput" autocomplete="off" />
+          </span>
+        </div>
+        <pagination-controls autoHide="true" (pageChange)="page=$event" class="pagination" (click)="onPaginate()"></pagination-controls>
+        <div class="row">
+          <div class="col-12 alert alert-success" *ngIf="showSuccessMessage">
+            <div class="text-center" *ngIf="assetsList.length > 0">
+              <h4>Asset <u>deleted successfully</u> from Store!</h4>
+           </div>
+          </div>
+          <div class="col-12 alert alert-danger" *ngIf="showErrorMessage">
+            <div class="text-center">
+              <h4>Asset <u>not deleted</u> from Store!</h4>
+            </div>
+          </div>
+        </div>
+        <table class="table-assets-list">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Asset ID</th>
+              <th>Category</th>
+              <th>Make</th>
+              <th>Primary Feature</th>
+              <th>Secondary Feature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let asset of assetsList | multifilterpipe: { assetId:filterText, category:filterText, make:filterText, primary:filterText, secondary:filterText } : false | paginate: { itemsPerPage:6, currentPage:page, totalItems: total}; let rowIndex = index">
+              <ng-template [ngIf]="rowIndex != selectedRow" [ngIfElse]="confirmDelete">
+                <td><i (click)="selectedRow = rowIndex;" class="fa fa-trash-o"></i></td>
+              </ng-template>
+              <ng-template #confirmDelete>
+                <td [class.active]="rowIndex == selectedRow">
+                  <i class="fa fa-check text-danger" (click)="deleteAsset(asset)"></i><i class="fa fa-remove text-warning" (click)="selectedRow = null"></i>
+                </td>
+              </ng-template>
+              <td>{{asset.assetId}}</td>
+              <td>{{asset.category}}</td>
+              <td>{{asset.make}}</td>
+              <td>{{asset.primary}}</td>
+              <td>{{asset.secondary}}</td>
+            </tr>
+            <tr *ngIf="!(assetsList | multifilterpipe: { assetId:filterText, category:filterText, make:filterText, primary:filterText, secondary:filterText }).length">
+              <td colspan="6" style="text-align:center; background-color:#ccc;">
+                <b>No Results Found</b>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+      <ng-template #noAssetsFound>
+        <div class="no-assets-found">
+          <h5>Store is empty. No assets found in the Store.</h5><br />
+          <h5>Add assets to the Store from <a [routerLink]="['/Assets/AddAssets']" routerLinkActive="active"><u>here</u></a>.</h5>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

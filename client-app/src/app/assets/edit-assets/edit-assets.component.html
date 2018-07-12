@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="how-to-use">
+    <h5>How To Use This Page</h5>
+    <ul class="row">
+      <li class="col-sm-6">Pagination will be visible after 6 records.</li>
+      <li class="col-sm-6">Click on the EDIT icon to select an asset that has to be edited/updated.</li>
+      <li class="col-sm-6">Press ENTER key or click on TICK icon to save changes.</li>
+      <li class="col-sm-6">Click on CROSS icon to discard any edits.</li>
+      <li class="col-sm-6">Type in some text in the  search box to filter asset info.</li>
+      <li class="col-sm-6"><b>Sorting not available for table columns.</b></li>
+    </ul>
+    <h1 class="col-sm-12">Edit/Update Store Assets</h1>
+  </div>
+  <ngx-spinner
+    bdColor="rgba(255,255,255,0.7)"
+    size="medium"
+    color="red"
+    type="square-jelly-box">
+  </ngx-spinner>
+  <div class="row">
+    <div class="col-sm-12 asset-info-container" *ngIf="assetsList">
+      <div *ngIf="!showNoAssetsMessage; then showAssetsList else noAssetsFound"></div>
+      <ng-template #showAssetsList>
+        <div class="asset-info-utilities">
+          <span class="col-sm-3 total-assets">Total Assets in the Store: {{assetsList.length}}</span>
+          <span class="col-sm-9 search">
+            <input type="text" class="input-text" [value]="filterText" [placeholder]="filterPlaceholder" [formControl]="filterInput" autocomplete="off" />
+          </span>
+        </div>
+        <pagination-controls autoHide="true" (pageChange)="pageNumber = $event" class="pagination" (click)="onPaginate()"></pagination-controls>
+        <div class="row">
+          <div class="col-12 alert alert-success" *ngIf="showSuccessMessage">
+            <div class="text-center">
+              <h4>Asset <u>successfully updated</u> to Store!</h4>
+            </div>
+          </div>
+          <div class="col-12 alert alert-danger" *ngIf="showErrorMessage">
+            <div class="text-center">
+              <h3>Asset <u>not updated</u> to Store!</h3>
+            </div>
+          </div>
+        </div>
+        <table class="table-assets-list">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Asset ID</th>
+              <th>Category</th>
+              <th>Make</th>
+              <th>Primary Feature</th>
+              <th>Secondary Feature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="!(assetsList | multifilterpipe: { assetId:filterText, category:filterText, make:filterText, primary:filterText, secondary:filterText }).length">
+              <td colspan="6" style="text-align:center; background-color:#ccc;">
+                <b>No Results Found</b>
+              </td>
+            </tr>
+            <tr *ngFor="let asset of assetsList | multifilterpipe: { assetId:filterText, category:filterText, make:filterText, primary:filterText, secondary:filterText } : false | paginate: { itemsPerPage: 6, currentPage: pageNumber}; let i = index">
+              <ng-template [ngIf]="i!=selectedRow" [ngIfElse]="editAsset1">
+                <td>
+                  <i class="fa fa-pencil-square-o" (click)="editAsset(asset);selectedRow=i;"></i>
+                </td>
+                <td>{{asset.assetId}}</td>
+                <td>{{asset.category}}</td>
+                <td>{{asset.make}}</td>
+                <td>{{asset.primary}}</td>
+                <td>{{asset.secondary}}</td>
+              </ng-template>
+              <ng-template #editAsset1>
+                  <td [class.active]="asset.assetId === assetId"><span><i class="fa fa-check text-info" (click)="doneAsset(asset)"></i><i class="fa fa-remove text-warning" (click)="cancelUpdate()"></i></span></td>
+                  <td>
+                    <input type="text" name="assetId" id="assetId" [readonly]="true" (keypress)="submitAsset($event, asset)" [(ngModel)]="asset.assetId" placeholder="Asset ID" class="input-text" autocomplete="off">
+                  </td>
+                  <td>
+                    <select name="category" id="category" (keypress)="submitAsset($event, asset)" [(ngModel)]="asset.category" placeholder="Category" class="form-control">
+                      <option *ngFor="let category of categories" [value]="category.value">{{category.display}}</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select name="make" id="make" (keypress)="submitAsset($event, asset)" [(ngModel)]="asset.make" placeholder="Make" class="form-control">
+                      <option *ngFor="let make of makes" [value]="make.value">{{make.display}}</option>
+                    </select>
+                  </td>
+                  <td><input type="text" name="primary" id="primary" (keypress)="submitAsset($event, asset)" [(ngModel)]="asset.primary" class="input-text" autocomplete="off"></td>
+                  <td><input type="text" name="secondary" id="secondary" [(ngModel)]="asset.secondary" class="input-text" autocomplete="off"></td>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+      <ng-template #noAssetsFound>
+        <div class="no-assets-found">
+          <h5>Store is empty. No assets found in the Store.</h5><br />
+          <h5>Add assets to the Store from <a [routerLink]="['/Assets/AddAssets']" routerLinkActive="active"><u>here</u></a>.</h5>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

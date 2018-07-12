@@ -1,0 +1,89 @@
+.form-add-assets {
+  width: 80%;
+  margin: 2em auto;
+  padding: 1.5em 1.5em 2em;
+  background-color: rgba(255,255,255,.9);
+  box-shadow: 0 0 20px rgba(0,0,0,.3);
+
+  form {
+    .text-info {
+      font-size: 0.95em;
+      color: #ff0202 !important;
+    }
+
+    .form-group {
+      position:relative;
+      margin-bottom: 1em;
+      padding: 1em 0 0;
+
+      .input-text {
+        display:block;
+        width: 100%;
+        padding: 0;
+        font-size: 0.85em;
+        border:none;
+        border-radius: 0;
+        border-bottom:1px solid #0e7a8e;
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: #ccc;
+          opacity: 1; /* Firefox */
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: #ccc;
+        }
+        &::-ms-input-placeholder { /* Microsoft Edge */
+          color: #ccc;
+        }
+        &:focus, &:valid {  //active state
+          color: #333;
+          outline: none;
+          box-shadow: none;
+          border-bottom: 2px solid #cc0000;
+          transition:0.5s ease-in-out all;
+          -moz-transition:0.5s ease-in-out;
+          -webkit-transition:0.5s ease-in-out;
+        }
+      }
+
+      select {
+        padding: 0.25em;
+        font-size: 0.85em;
+        border-radius: 0;
+        &:focus {
+          outline:none;
+          border: 1px solid #ccc;
+          box-shadow:none;
+        }
+      }
+
+      label {
+        margin-bottom: 0;
+        color:#333;
+        font-size: 0.95em;
+        font-weight:normal;
+        transition:0.2s ease all;
+        -moz-transition:0.2s ease all;
+        -webkit-transition:0.2s ease all;
+      }
+    }
+    button {
+      margin: 1em auto 0;
+      padding: 10px 20px;
+    }
+  }
+  .asset-features {
+    padding-left: 3em;
+    h6 {
+      padding: 0 0 0.25em;
+      margin-bottom: 0;
+    }
+    ul {
+      margin-bottom: 1em;
+      font-size: 0.75em;
+      color: #aaa;
+      li {
+        list-style-type: square;
+      }
+    }
+  }
+}

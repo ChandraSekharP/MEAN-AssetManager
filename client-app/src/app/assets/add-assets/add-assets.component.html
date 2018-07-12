@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="how-to-use">
+    <h5>How To Use This Page</h5>
+    <ul class="row">
+      <li class="col-sm-6">Refer to the hints about what text to type for Primary and Secondary features.</li>
+      <li class="col-sm-6">Type important features of the asset in Primary and Secondary feature textboxes.</li>
+      <li class="col-sm-6">'Save Asset to Store' button will be activated only if the form is valid.</li>
+    </ul>
+    <h1 class="col-sm-12">Add New Assets to Store</h1>
+  </div>
+  <div class="form-add-assets">
+    <div class="row">
+      <div class="col-12 alert alert-success" *ngIf="showSuccessMessage">
+        <div class="text-center">
+          <h3>Asset <u>successfully added</u> to Store!</h3>
+        </div>
+      </div>
+      <div class="col-12 alert alert-danger" *ngIf="showErrorMessage">
+        <div class="text-center">
+          <h4>Asset <u>not added</u> to Store!</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form (ngSubmit)="addAsset()" #assetForm="ngForm" class="col-sm-8">
+        <h6 class="text-info">All fields are mandatory</h6>
+        <div class="row">
+          <div class="form-group col-sm-5">
+            <label>Choose a Category</label>
+            <select name="category" [(ngModel)]="newAsset.category" class="form-control" required>
+              <option value="" hidden>-- Select One --</option>
+              <option *ngFor="let category of categories" [value]="category.value" style="line-height:2em">&nbsp;{{category.display}}&#13;</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-5 offset-sm-2">
+            <label>Choose a Manufacturer</label>
+            <select name="make" [(ngModel)]="newAsset.make" class="form-control" required>
+              <option value="" hidden>-- Select One --</option>
+              <option *ngFor="let make of makes" [value]="make.value">{{make.display}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-12">
+            <input type="text" class="input-text" [(ngModel)]="newAsset.primary" name="primary" placeholder="Asset Primary Feature" aria-label="Asset Primary Feature" autocomplete="off" required />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-12">
+            <input type="text" class="input-text" [(ngModel)]="newAsset.secondary" name="secondary" placeholder="Asset Secondary Feature" aria-label="Asset Secondary Feature" autocomplete="off" required />
+          </div>
+        </div>
+        <div class="row">
+          <button type="submit" class="btn btn-success" [disabled]="!assetForm.valid">Save Asset to Store</button>
+        </div>
+      </form>
+      <div class="col-sm-4 asset-features">
+        <h6><u>Hint: Primary Features</u></h6>
+        <ul>
+          <li>Apple Macbook Pro Core i7</li>
+          <li>IBM Server with POWER9 Processor</li>
+          <li>D-Link DIR-615 Wireless N 300 Router</li>
+          <li>Canon MF3010 Multi-function Printer</li>
+          <li>BenQ MS531P Digital Projector</li>
+          <li>Samsung 108cm (43'') Full HD LED TV</li>
+        </ul>
+        <h6><u>Hint: Secondary Features</u></h6>
+        <ul>
+          <li>64 bit Mac OS Operating System, 512 GB SSD, 15 inch Display</li>
+          <li>Express 4.0 connection, an NVIDIA Interconnect</li>
+          <li>No Modem, 300 Mbps Speed, 2.4 GHz</li>
+          <li>2 inch LCD, LaserJet M1005</li>
+          <li>30ft projection, 800x600px, 1000hrs lamp</li>
+          <li>1920 x 1080 Full HD,3 HDMI,1 USB</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

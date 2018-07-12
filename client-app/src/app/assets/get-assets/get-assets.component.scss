@@ -1,0 +1,43 @@
+.table-assets-list {
+  tr {
+    &:nth-of-type(1) {
+      background-color: #bae5f3;
+      td {
+          border-top: 2px solid #fff;
+          border-right: 1px solid #fff;
+          border-bottom: 2px solid #fff;
+          .form-control {
+            outline: none;
+            .input-text {
+              border: 0;
+            }
+          }
+          input {
+            border: none;
+            border-bottom: 1px solid transparent;
+            background-color: transparent;
+            &:focus {
+              padding: 0;
+              color: #333;
+              outline: none;
+              transition: all 0.5s ease-in-out;
+              border-bottom: 1px solid #cc6666;
+            }
+            &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+              color: #e64848;
+              opacity: 1; /* Firefox */
+            }
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+              color: #fff;
+            }
+            ::-ms-input-placeholder { /* Microsoft Edge */
+              color: #fff;
+            }
+          }
+          select:active {
+            padding: 0;
+          }
+      }
+    }
+  }
+}

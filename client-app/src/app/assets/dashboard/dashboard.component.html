@@ -1,0 +1,49 @@
+<div class="container-fluid" *ngIf="assetsList">
+  <div class="row">
+    <h1 class="col-12">Application Dashboard Page</h1>
+    <div class="col-12 col-sm-6 col-md-5 dashboard">
+      <p>Click on the links below to navigate to respective pages and start working on them. IT admins can add new assets to the Store, get assets from the Store, edit/delete existing assets in the Store.</p>
+      <ul class="row actions">
+        <li class="col-sm-12">
+          <a [routerLink]="['/Assets/AddAssets']" routerLinkActive="active" class="clearfix">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>Add New Assets To Store</span>
+          </a>
+        </li>
+        <li class="col-sm-12">
+          <a [routerLink]="['/Assets/GetAssets']" routerLinkActive="active" class="clearfix">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span>List All Store Assets</span>
+          </a>
+        </li>
+        <li class="col-sm-12">
+          <a [routerLink]="['/Assets/EditAssets']" routerLinkActive="active" class="clearfix">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <span>Update Sotre Assets</span>
+          </a>
+        </li>
+        <li class="col-sm-12">
+          <a [routerLink]="['/Assets/DeleteAssets']" routerLinkActive="active" class="clearfix">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <span>Remove Assets From Store</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="d-sm-none w-100"></div>
+    <div class="col-12 col-sm-5 offset-sm-1 col-md-6 offset-md-1 store-asset-count">
+      <p class="col-12">
+        <span class="col-xs-8">Total Store Assets</span>
+        <span class="col-xs-4">{{assetsList.length}}</span>
+      </p>
+      <ul class="row">
+        <li class="col-sm-12 col-md-6" *ngFor="let category of categories">
+          <div class="col-12">
+            <span class="col-xs-9">{{category.display}}</span>
+            <span class="col-xs-3">{{category.count}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

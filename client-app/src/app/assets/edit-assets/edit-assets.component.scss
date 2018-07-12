@@ -1,0 +1,50 @@
+.table-assets-list {
+  tr {
+    td {
+      input, select {
+        border: none;
+        background-color: transparent;
+      }
+      .fa-check, .fa-remove {
+        font-size: 1.5em;
+      }
+      .fa-check {
+        padding-right: 5px;
+      }
+      .fa-remove {
+        padding-right: 0px;
+      }
+      &:nth-of-type(1) { width: 5.75%; }
+      &:nth-of-type(2) { width: 8.25%; }
+      &:nth-of-type(3) { width: 13%; }
+      &:nth-of-type(4) { width: 12%; }
+      &:nth-of-type(5) { width: 30%; }
+      &:nth-of-type(6) { width: 30%; }
+
+      &.active {
+        & ~td {
+          vertical-align: top;
+          background-color: transparent;
+          .input-text, select {
+            width: 100%;
+            margin-bottom: -1px;
+            padding-bottom: 0;
+            padding-left: 0;
+            border: none;
+            border-bottom: 1px solid #cc6666;
+          }
+          select {
+            height: 20px;
+            color: #000;
+          }
+          &:nth-of-type(2) {
+            .input-text {
+              border: none;
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,234 @@
+
+.sidebar {
+  height: calc(100vh - 140px);
+  color: #fff;
+  background-color: #52bad5;
+  p {
+    padding: 40px 20px;
+    margin: 0;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      border-top: 1px solid #fff;
+      list-style-type: none;
+
+      a {
+        display: block;
+        padding: 10px 20px 10px 20px;
+        color: #fff;
+        &:hover, :active {
+          text-decoration: none;
+        }
+        &.active {
+          color: #3a3a3a;
+          background-color: #98EED9;
+          & .fa {
+            color: #3a3a3a;
+          }
+        }
+        .fa {
+          color: #fff;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  padding-left: 1em;
+}
+
+h6 {
+  padding: 0.5em 4em 0.25em 0;
+  font-family: 'Kotta One', arial, helvetica, verdana, sans-serif;
+  font-size: 0.9em;
+  color: #ff0202;
+  line-height: 1.5;
+}
+
+.form-control {
+  outline: none;
+  .input-text {
+    border: 0;
+  }
+}
+
+select {
+  padding: 0 !important;
+  font-size: 0.95em;
+  border-radius: 0;
+}
+
+.form-control:focus, select:active {
+  border-color: #ced4da;
+  box-shadow: none;
+  outline: none;
+}
+
+.form-add-assets {
+  background-color: rgba(255,255,255,.9);
+  box-shadow: 0 0 20px rgba(0,0,0,.3);
+}
+
+.table-assets-list {
+  width: 100%;
+  margin: 1em 0;
+  i.fa-pencil-square-o, i.fa-trash-o {
+    display: block;
+    top: 5px;
+    right: 10px;
+    font-size: 1.65em;
+    text-align: center;
+    vertical-align: middle;
+    color: #cc0000;
+  }
+
+  th {
+    padding: 0.5em;
+    color: #fff;
+    border-right: 1px solid #fff;
+    background-color: #008cba;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    & > span {
+        position: relative;
+        .fa-caret-up {
+          position: absolute;
+          left: 0;
+        }
+        .fa-caret-down {
+          position: relative;
+          top: 5px;
+        }
+    }
+  }
+  tr {
+      td {
+        position: relative;
+        i.fa-trash-o {
+          top: 3px;
+          right: 12px;
+        }
+        &.active {
+          & ~td {
+            color: #fff;
+            background-color: #cc0000;
+            border-right: 1px solid #fff;
+            i.fa-check, i.fa-remove {
+              display: block;
+              top: 5px;
+              right: 10px;
+              font-size: 1.75em;
+              vertical-align: middle;
+              color: #cc0000;
+            }
+          }
+        }
+    }
+    &:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+  }
+  td {
+    vertical-align: top;
+    padding: 0.5em;
+    font-size: 0.825em;
+    &:nth-of-type(1) { width: 10%; }
+    &:nth-of-type(2) { width: 10%; }
+    &:nth-of-type(3) { width: 10%; }
+    &:nth-of-type(4) { width: 35%; }
+    &:nth-of-type(5) { width: 35%; }
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.how-to-use {
+  margin-bottom: 1.5em;
+  padding: 0.5em 0 0;
+  background-color: #acecb3;
+
+  h5 {
+    margin-bottom: 0;
+    padding-left: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  ul {
+    padding: 0 0 0.5em 2em;
+    font-size: 0.8em;
+    li {
+      padding: 0.25em 2em 0.25em 0;
+      list-style-type: square;
+    }
+ }
+
+ h1 {
+    margin-bottom: 0;
+    padding: 0.25em;
+    font-size: 2.25em;
+    color: #fff;
+    background-color: #84ca7b;
+  }
+}
+
+.asset-info-utilities {
+  padding-bottom: 10px;
+  .total-assets {
+    padding-top: 7px;
+    display: inline-block;
+  }
+  .search {
+    .input-text {
+      float: right;
+      width: 35%;
+      padding: 0.25em 0.5em;
+      font-size: 0.9em;
+      border: 1px solid #bababa;
+      &:focus {
+        outline: none;
+        width: 55%;
+        transition: .5s;
+        box-shadow: inset 0 2px 2px #fafafb, 0 0 5px rgba(0,119,204,0.4);
+        border-color: #0095ff;
+      }
+    }
+  }
+}
+.pagination {
+  margin-bottom: 10px;
+  float: right;
+  & /deep/ .ngx-pagination {
+    text-align: right;
+    margin-bottom: 0 !important;
+  }
+}
+
+.asset-info-container {
+  .no-assets-found {
+    position: relative;
+    top: 20%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: auto;
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    h5 {
+      font-size: 2em;
+    }
+  }
+}

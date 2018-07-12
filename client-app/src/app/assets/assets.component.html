@@ -1,0 +1,18 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="sidebar col-3">
+      <p>Below navigation links redirect to respective pages and IT admins can add new assets to the Store, get assets from the Store, edit/delete existing assets in the Store.</p>
+      <ul>
+        <li><a [routerLink]="['/Dashboard']" routerLinkActive="active"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Go To Dashboard Page</a></li>
+        <li><a [routerLink]="['/Assets/AddAssets']" routerLinkActive="active"><i class="fa fa-plus" aria-hidden="true"></i>Add Assets to Store</a></li>
+        <li><a [routerLink]="['/Assets/GetAssets']" routerLinkActive="active"><i class="fa fa-bars" aria-hidden="true"></i>Get Assets from Store</a></li>
+        <li><a [routerLink]="['/Assets/EditAssets']" routerLinkActive="active"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit/Update Store Assets</a></li>
+        <li><a [routerLink]="['/Assets/DeleteAssets']" routerLinkActive="active"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Assets from Store</a></li>
+      </ul>
+    </div>
+    <div class="col-9 main-content">
+      <router-outlet></router-outlet>
+   </div>
+  </div>
+</div>

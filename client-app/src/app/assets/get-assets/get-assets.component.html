@@ -1,0 +1,117 @@
+<div class="container-fluid">
+  <div class="how-to-use">
+    <h5>How To Use This Page</h5>
+    <ul class="row">
+      <li class="col-sm-6">ASSET ID is generated dynamically.</li>
+      <li class="col-sm-6">Filtering and Sorting options are available for all columns.</li>
+      <li class="col-sm-6">Click on any column header to sort that column in ASC or DESC order.</li>
+      <li class="col-sm-6">Type in 'Filter this column' textbox to filter respective columns.</li>
+    </ul>
+    <h1 class="col-sm-12">Store Assets Listing</h1>
+  </div>
+  <ngx-spinner
+    bdColor="rgba(255,255,255,0.7)"
+    size="medium"
+    color="red"
+    type="square-jelly-box">
+  </ngx-spinner>
+  <div class="row">
+    <div class="col-sm-12 asset-info-container" *ngIf="assetsList">
+      <div *ngIf="!showNoAssetsMessage; then showAssetsList else noAssetsFound"></div>
+      <ng-template #showAssetsList>
+        <div class="asset-info-utilities">
+          <span class="total-assets">Total Assets in the Store: {{assetsList.length}}</span>
+          <pagination-controls autoHide="true" (pageChange)="pageNumber = $event" class="pagination"></pagination-controls>
+        </div>
+        <table class="table-assets-list">
+          <thead>
+            <tr>
+              <th (click)="sortColumn='assetId'; sortReverse = !sortReverse; hideSortIcons = true">
+                Asset ID
+                <span *ngIf="!hideSortIcons">
+                  <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-caret-up"></i>
+                </span>
+                <span *ngIf="sortColumn == 'assetId'">
+                  <i *ngIf="sortReverse" class="fa fa-caret-down"></i>
+                  <i *ngIf="!sortReverse" class="fa fa-caret-up"></i>
+                </span>
+              </th>
+              <th (click)="sortColumn='category'; sortReverse = !sortReverse; hideSortIcons = true">
+                Category
+                <span *ngIf="!hideSortIcons">
+                  <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-caret-up"></i>
+                </span>
+                <span *ngIf="sortColumn == 'category'">
+                  <i *ngIf="sortReverse" class="fa fa-caret-down"></i>
+                  <i *ngIf="!sortReverse" class="fa fa-caret-up"></i>
+                </span>
+              </th>
+              <th (click)="sortColumn='make'; sortReverse = !sortReverse; hideSortIcons = true">
+                Make
+                <span *ngIf="!hideSortIcons">
+                  <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-caret-up"></i>
+                </span>
+                <span *ngIf="sortColumn == 'make'">
+                  <i *ngIf="sortReverse" class="fa fa-caret-down"></i>
+                  <i *ngIf="!sortReverse" class="fa fa-caret-up"></i>
+                </span>
+              </th>
+              <th (click)="sortColumn='primary'; sortReverse = !sortReverse; hideSortIcons = true">
+                Primary
+                <span *ngIf="!hideSortIcons">
+                  <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-caret-up"></i>
+                </span>
+                <span *ngIf="sortColumn == 'primary'">
+                  <i *ngIf="sortReverse" class="fa fa-caret-down"></i>
+                  <i *ngIf="!sortReverse" class="fa fa-caret-up"></i>
+                </span>
+              </th>
+              <th (click)="sortColumn='secondary'; sortReverse = !sortReverse; hideSortIcons = true">
+                Secondary
+                <span *ngIf="!hideSortIcons">
+                  <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-caret-up"></i>
+                </span>
+                <span *ngIf="sortColumn == 'secondary'">
+                  <i *ngIf="sortReverse" class="fa fa-caret-down"></i>
+                  <i *ngIf="!sortReverse" class="fa fa-caret-up"></i>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="assetId" [(ngModel)]="filter.assetId" placeholder="Filter this column" autocomplete="off"></td>
+              <td><input type="text" name="category" [(ngModel)]="filter.category" placeholder="Filter this column" autocomplete="off"></td>
+              <td><input type="text" name="make" [(ngModel)]="filter.make" placeholder="Filter this column" autocomplete="off"></td>
+              <td><input type="text" name="primary" [(ngModel)]="filter.primary" placeholder="Filter this column" autocomplete="off"></td>
+              <td><input type="text" name="secondry" [(ngModel)]="filter.secondary" placeholder="Filter this column" autocomplete="off"></td>
+            </tr>
+            <tr *ngIf="(assetsList | filterpipe:filter).length === 0">
+              <td colspan="5" style="text-align:center;">
+                <b>No Results Found</b>
+              </td>
+            </tr>
+            <tr *ngFor="let asset of assetsList | filterpipe:filter | orderBy:sortColumn:sortReverse | paginate: { itemsPerPage: 6, currentPage: pageNumber}">
+              <td>{{ asset.assetId }}</td>
+              <td>{{ asset.category }}</td>
+              <td>{{ asset.make }}</td>
+              <td>{{ asset.primary }}</td>
+              <td>{{ asset.secondary }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+      <ng-template #noAssetsFound>
+        <div class="no-assets-found">
+          <h5>Store is empty. No assets found in the Store.</h5><br />
+          <h5>Add assets to the Store from <a [routerLink]="['/Assets/AddAssets']" routerLinkActive="active"><u>here</u></a>.</h5>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

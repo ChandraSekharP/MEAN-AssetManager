@@ -1,0 +1,269 @@
+h1 {
+  padding: 0 0.25em 0.5em;
+  font-family: 'Scope One', helvetica, verdana, sans-serif, arial;
+  font-size: 1.25em;
+  font-weight: bold;
+  @media screen and (min-width:576px) and (max-width:767px) {
+    font-size: 1.6em;
+  }
+  @media screen and (min-width:768px) and (max-width:991px) {
+    padding: 0em 0.25em 0.5em;
+    font-size: 1.9em;
+  }
+  @media screen and (min-width:992px) and (max-width:1199px) {
+    padding: 0.25em 0.25em 0.75em;
+    font-size: 2.15em;
+  }
+  @media screen and (min-width:1200px) {
+    padding: 0.25em 0.25em 0.5em;
+    font-size: 2.5em;
+  }
+}
+.dashboard {
+  color: #fff;
+  background: #f5f5f5;
+  @media screen and (min-width:350px) and (max-width:575px){
+    max-width: 100%;
+  }
+  @media screen and (max-width: 1199px) {
+    margin-bottom: 20px;
+  }
+  & > p {
+    padding: 1em 0.75em 0;
+    font-size: 0.75em;
+    color: #010101;
+    @media screen and (min-width:576px) {
+      padding: 1.5em 1em 0.5em;
+    }
+    @media screen and (min-width:576px) and (max-width:767px) {
+      font-size: 0.8em;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      font-size: 0.9em;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      font-size: 1em;
+    }
+    @media screen and (min-width: 1200px) {
+      font-size: 1.15em;
+    }
+  }
+  ul {
+    margin: 0 auto;
+    padding: 0 0.75em;
+    @media screen and (min-width:351px) and (max-width:450px) {
+      padding: 0 0.25em;
+    }
+    @media screen and (min-width:451px) and (max-width:575px) {
+      padding: 0 0;
+    }
+    @media screen and (min-width:576px) and (max-width:767px) {
+      padding: 0 1em;
+    }
+    @media screen and (min-width:768px) {
+      padding: 0 1.25em;
+    }
+    li {
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      @media screen and (min-width:350px) and (max-width:412px) {
+        width: 46%;
+        margin: 0 1%;
+      }
+      @media screen and (min-width:410px) and (max-width:575px) {
+        width: 46%;
+        margin: 0 1.5% 3%;
+      }
+      @media screen and (min-width:320px) and (max-width:767px) {
+        margin: 0 auto 1em;
+      }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        width: 90.5%;
+        height: 73px;
+        margin: 0 auto;
+      }
+      @media screen and (min-width:992px) {
+        margin-bottom: 2em;
+      }
+      &:nth-of-type(1) {
+        a {
+          background-color: #01be86;
+          i {
+            background-color: #049469;
+          }
+        }
+      }
+      &:nth-of-type(2) {
+          a {
+          background-color: #008cba;
+          i {
+            background-color: #0a6f90;
+          }
+        }
+      }
+      &:nth-of-type(3) {
+        a {
+          background-color: #e0a800;
+          i {
+            background-color: #b58a09;
+          }
+        }
+      }
+      &:nth-of-type(4) {
+        a {
+          background-color: #cc0000;
+          i {
+            background-color: #980606;
+          }
+        }
+      }
+
+      a {
+        display: block;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        &:hover {
+          text-decoration: none;
+        }
+        &:after {
+          display: table;
+          clear: both;
+        }
+        i {
+          float: left;
+          padding: 0.75em;
+          font-size: 1em;
+          color: #fff;
+          text-align: center;
+          @media screen and (min-width:576px) and (max-width:767px) {
+            padding: 0.7em;
+            font-size: 1em;
+          }
+          @media screen and (min-width: 768px) and (max-width: 991px) {
+            font-size: 1.5em;
+          }
+          @media screen and (min-width: 992px) and (max-width: 1199px) {
+            font-size: 1.5em;
+          }
+          @media screen and (min-width: 1200px) {
+            font-size: 1.75em;
+          }
+        }
+        span {
+          display: block;
+          padding: 0.7em 2.5em 0 3.5em;
+          font-size: 0.8em;
+          text-align: left;
+          @media screen and (min-width:350px) and (max-width:410px) {
+            padding: 0.9em 0 0 4em;
+            font-size: 0.65em;
+          }
+          @media screen and (min-width:411px) and (max-width:469px) {
+            padding: 0.9em 0 0 3.75em;
+            font-size: 0.75em;
+          }
+          @media screen and (min-width:470px) and (max-width:575px) {
+            padding: 0.9em 0 0 3.75em;
+            font-size: 0.75em;
+          }
+          @media screen and (min-width: 576px) and (max-width: 767px) {
+            padding: 0.7em 2.5em 0 3.5em;
+            font-size: 0.8em;
+          }
+          @media screen and (min-width:768px) and (max-width:991px) {
+            padding: 1.5em 0 0 5em;
+            font-size: 0.85em;
+          }
+          @media screen and (min-width: 992px) and (max-width: 1199px) {
+            padding: 1.15em 4.75em;
+            font-size: 1em;
+          }
+          @media screen and (min-width: 1200px) {
+            padding: 1em 4.5em;
+            font-size: 1.25em;
+          }
+        }
+      }
+    }
+  }
+}
+
+.store-asset-count {
+  padding: 0.75em;
+  background-color: #f9e6cc;
+  @media screen and (max-width:345px) {
+    max-width: 100%;
+  }
+  @media screen and (min-width: 576px) and (max-width: 767px) {
+    padding: 1em;
+  }
+  @media screen and (min-width: 992px) {
+    padding: 2em 1.5em;
+  }
+  p, li {
+    margin-bottom: 1em;
+    padding: 0.75em;
+    span:nth-of-type(2) {
+      float: right;
+      font-weight: bold;
+      text-align: left;
+      @media screen and (min-width:576px) {
+        text-align: right;
+      }
+      @media screen and (min-width: 1200px) {
+        font-size: 1.5em;
+      }
+    }
+  }
+  p {
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #8e8e8e;
+    box-shadow: 4px 4px 0px 0px #333;
+    @media screen and (min-width:576px) and (max-width:767px) {
+      padding: 0.75em;
+      font-size: 0.9em;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      padding: 1em 0.75em;
+      font-size: 1.1em;
+    }
+    @media screen and (min-width: 1200px) {
+      padding: 1em;
+      font-size: 1.5em;
+    }
+  }
+  li {
+    display: flex;
+    margin: 0.5em 0;
+    font-size: 0.75em;
+    background-color: #e6cba5;
+    @media screen and (min-width:420px) and (max-width:575px) {
+      width: 50%;
+    }
+    @media screen and (min-width:576px) and (max-width:767px) {
+      margin: 0.5em 0;
+      padding: 0.75em;
+      font-size: 0.75em;
+    }
+    @media screen and (min-width:768px) and (max-width:991px) {
+      padding: 1em 0.75em;
+      font-size: 0.75em;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      padding: 1em 0.75em;
+      font-size: 0.95em;
+    }
+    @media screen and (min-width: 1200px) {
+      font-size: 1em;
+    }
+    &:nth-child(even) {
+      border-left: 4px solid #9c681f;
+    }
+    &:nth-child(odd) {
+      border-right: 4px solid #9c681f;
+    }
+  }
+}
