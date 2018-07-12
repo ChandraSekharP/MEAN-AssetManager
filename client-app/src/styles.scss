@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+//@import 'variables';
+//@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/font-awesome/css/font-awesome.css';
+@import url('https://fonts.googleapis.com/css?family=Scope+One:400,700');
+@import url('https://fonts.googleapis.com/css?family=Kotta+One:400,700');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,700');
+
+/* Oxygen, Fira Sans, Quattrocento, Enriqueta, Zilla Slab, Rasa, Spectral, Trirong */
+
+html, body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1em;
+}
+
+body {
+  padding: 20px;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.container-fluid, .container, .row {
+  margin: 0;
+  padding: 0;
+}
+
+[class*="col-"] {
+  padding: 0;
+}
+
+.fa {
+  font-size: 1em;
+  color: #b9b9b9;
+  cursor: pointer;
+  @media (max-width:575px) {
+    padding-left: 0;
+  }
+  &.fa-caret-up, &.fa-caret-down{
+    padding-left: 0.25em;
+    font-size: 1em;
+    color:#fff;
+
+  }
+}
+
+.fa-arrow-circle-o-right {
+  position: relative;
+  color: #fff;
+  @media (max-width:575px) {
+    font-size: 0.95em;
+  }
+}
+
+.fa-user-circle-o {
+  padding: 5px 0 3px;
+  font-size: 1.75rem;
+  color: #07b0eb;
+  @media (max-width:575px) {
+    padding: 7px 0 6px;
+    font-size: 1.5em;
+  }
+}
+
+.fa-remove {
+  padding-right: 5px;
+  font-size: 14px;
+  color: #aa0000;
+}
+
+select:focus, select:active {
+  outline: none;
+}
+
+.alert {
+  margin: 0;
+  padding: 0.75em 0.5em 0.5em 0.5em;
+  border-width: 2px;
+  & + .alert-success, .alert-danger {
+    border-width: 2px;
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+}
