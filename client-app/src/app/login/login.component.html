@@ -1,0 +1,36 @@
+<div class="form-container">
+  <div class="alert alert-danger alert-dismissible" *ngIf="showErrorMessage">
+    <div class="text-center">
+      <h5>Invalid Credentials!!!</h5>
+    </div>
+  </div>
+  <div class="rules" *ngIf="showLoginRules">
+    <p>Login Instructions:</p>
+    <p class="mandatory">All fields are mandatory</p>
+  </div>
+  <form name="form" #form="ngForm" (ngSubmit)="login(form.value)">
+    <div class="form-group">
+      <span *ngIf="!loginName.touched || (loginName.valid && !failedLogin)" class="text-info">Use the Login Name that you chose during registration.</span>
+      <span *ngIf="loginName.touched && loginName.valid" class="text-success"></span>
+      <span *ngIf="loginName.touched && loginName.invalid" class="text-danger"><i class="fa fa-remove" aria-hidden="true"></i>Use the Login Name that you chose during registration.</span>
+      <span *ngIf="loginName.touched && loginName.valid && failedLogin" class="text-danger"><i class="fa fa-remove" aria-hidden="true"></i>Check Login Name.</span>
+      <label class="col-12">
+				<input type="text" class="input-text" name="loginName" placeholder="Type in Login Name. Do not use Full Name." #loginName="ngModel" ngModel pattern="[a-zA-Z0-9]{6,11}" aria-label="Login Name" autocomplete="off" required>
+        <div class="input-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+			</label>
+    </div>
+    <div class="form-group">
+      <span *ngIf="!password.touched || (password.valid && !failedLogin)" class="text-info">Type in the password that you chose during registration.</span>
+      <span *ngIf="password.touched && password.valid" class="text-success"></span>
+      <span *ngIf="password.touched && password.invalid" class="text-danger"><i class="fa fa-remove" aria-hidden="true"></i>Type in the password that you chose during registration.</span>
+      <span *ngIf="password.valid && failedLogin" class="text-danger"><i class="fa fa-remove" aria-hidden="true"></i>Check Password.</span>
+      <label class="col-12">
+        <input type="password" class="input-text" name="password" placeholder="Password" #password="ngModel" ngModel pattern="[a-zA-z0-9_!@#$%^-]{6,11}" aria-label="Password" autocomplete="off" required>
+        <div class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
+      </label>
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-login" [disabled]="!form.valid">Sign in <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row logout">
+    <h1 class="col-12">You are about to exit from this application.</h1>
+    <p class="col-12">
+      <i class="fa fa-angle-double-right" aria-hidden="true"></i> YES. <a (click)="authenticationService.logout();" routerLink="/" routerLinkActive="active">Logout</a> completely.
+      <span>This action requires re-login to access the application.</span>
+    </p>
+    <p class="col-12">
+      <i class="fa fa-angle-double-left" aria-hidden="true"></i> NO. I don't want to logout now.
+      <span>Go to <a routerLink="/Dashboard" routerLinkActive="active">Dashboard</a> page to resume your work.</span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 welcome">
+      <h2>Welcome to <br />Asset Manager Application</h2>
+      <h5>
+          This application enables IT Administrators easily deal with regular Asset Management tasks.
+          They can add new assets to the store and manage existing assets. This is an authentication
+          based applicaiton and so first registration and then login are mandatory.
+      </h5>
+    </div>
+    <div class="col-md-6 login-register">
+      <div class="tab-forms">
+        <ngx-spinner
+          bdColor="rgba(255,255,255,0.7)"
+          size="medium"
+          color="red"
+          type="square-jelly-box">
+        </ngx-spinner>
+        <input id="tab1" type="radio" name="tabs" /><label for="tab1">User Login<br /><h6>For Existing Users</h6></label>
+        <input id="tab2" type="radio" name="tabs" checked /><label for="tab2">Create Account<h6>For New Users</h6></label>
+        <div class="clearfix"></div>
+        <section id="content1"><app-login></app-login></section>
+        <section id="content2"><app-register></app-register></section>
+      </div>
+    </div>
+  </div>
+</div>

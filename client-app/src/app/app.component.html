@@ -1,0 +1,33 @@
+<div class="container-fluid site-content">
+  <div class="row">
+    <header class="col-12 clearfix">
+      <h1 class="pull-left"><a routerLink="/Dashboard" routerLinkActive="active">Asset Manager</a></h1>
+      <div class="pull-right user-profile d-sm-block" (clickOutside)="onClickedOutside($event)" (click)="showUserProfile = !showUserProfile">
+        <div *ngIf="authenticationService.isLoggedIn() && (router.url !== '/' || router.url !== '/Logout')" class="logged-in-user" [ngClass]="showUserProfile ? 'active' : ''">
+          <span><b>{{authenticationService.currentUser.username}}</b></span>
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+          <ul *ngIf="showUserProfile">
+            <li>
+              <span>Username</span>
+              <span>{{authenticationService.currentUser.username}}</span>
+            </li>
+            <li>
+              <span>LoginName</span>
+              <span>{{authenticationService.currentUser.loginName}}</span>
+            </li>
+            <li>
+              <span>Email</span>
+              <span>{{authenticationService.currentUser.email}}</span>
+            </li>
+            <li>
+              <a routerLink="/Logout" routerLinkActive="active"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="col-12 page-content clearfix">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

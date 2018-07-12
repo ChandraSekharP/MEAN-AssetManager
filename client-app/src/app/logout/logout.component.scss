@@ -1,0 +1,36 @@
+.logout {
+  margin: 10px auto;
+  text-align: center;
+  * {
+    margin: 1em 0;
+  }
+  h1 {
+    font-family: 'Scope One', Arial, Verdana;
+    font-size: 3em;
+    font-weight: bold;
+    color: #623a03;
+  }
+  p {
+    font-size: 1.5em;
+    color: #049469;
+    .fa-angle-double-right, .fa-angle-double-left {
+      position: relative;
+      top: 5px;
+      margin: 0 5px;
+      font-size: 1.75em;
+      color: #0a6f90;
+    }
+    a {
+      font-weight: bold;
+      color: #623a03;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    span {
+      font-size: 0.75em;
+      color: #007bff;
+    }
+  }
+}

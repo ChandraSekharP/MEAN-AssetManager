@@ -1,0 +1,28 @@
+.page-not-found {
+  margin: 10px auto;
+  text-align: center;
+  * {
+    margin: 0.75em 0;
+  }
+  h1 {
+    margin-bottom: 0;
+    font-family: 'Scope One', Arial, Verdana;
+    font-size: 8em;
+    font-weight: bold;
+    color: #623a03;
+  }
+  h4 {
+    color: #0a6f90;
+  }
+  h3 {
+    color: #049469;
+    a {
+      font-weight: bold;
+      color: #623a03;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

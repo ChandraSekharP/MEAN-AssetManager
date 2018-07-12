@@ -1,0 +1,82 @@
+<div class="form-container">
+  <div class="rules" *ngIf="showRegistrationRules">
+    <p>Registration Instructions:</p>
+    <p class="mandatory">All fields are mandatory</p>
+    <p>Remember your <b>Login Name</b>. This will be used during login after registration and <span style="font-weight:bold; text-decoration:underline;">not Your Full Name</span>.</p>
+    <p>Special Characters for Password and Re-type Password: _ ! @ # $ % ^ -.</p>
+    <p>First fill Password. Then fill Re-type Password.</p>
+  </div>
+  <div class="alert alert-danger alert-dismissible" *ngIf="showDuplicateMessage">
+    <div class="text-center">
+      <h5>Login Name already exists.<br />Please choose another one!</h5>
+    </div>
+  </div>
+  <div class="alert alert-success" *ngIf="showSuccessMessage">
+    <h4>Registration successful.<br />You can now login to the app!</h4>
+  </div>
+  <form name="form" [formGroup]="form">
+    <div class="container-fluid">
+      <div class="row form-group">
+        <span *ngIf="!form.controls['username'].touched || form.controls['username'].valid" class="text-info">Only alphabets. Length 6-22 characters.</span>
+        <span *ngIf="form.controls['username'].touched && form.controls['username'].valid" class="text-success"></span>
+        <span *ngIf="form.controls['username'].invalid && form.controls['username'].touched" class="text-danger">
+          <span *ngIf="form.controls['username'].errors?.required"><i class="fa fa-remove" aria-hidden="true"></i>Only alphabets. Length 6-22 characters.</span>
+          <span *ngIf="form.controls['username'].errors?.pattern"><i class="fa fa-remove" aria-hidden="true"></i>Invalid characters found.</span>
+          <span *ngIf="form.controls['username'].errors?.minlength || form.controls['username'].errors?.maxlength"><i class="fa fa-remove" aria-hidden="true"></i>Length 6-22 characters.</span>
+        </span>
+        <label class="col-12">
+					<input type="text" name="inputUsername" #username formControlName="username" placeholder="Your Full Name" autocomplete="off" (focus)="onControlFocus()" required />
+          <div class="input-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+				</label>
+      </div>
+      <div class="row form-group">
+        <span *ngIf="!form.controls['email'].touched || form.controls['email'].valid" class="text-info">Only standard email address.</span>
+        <span *ngIf="form.controls['email'].touched && form.controls['email'].valid" class="text-success"></span>
+        <span *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="text-danger">
+          <span *ngIf="form.controls['email'].errors?.required"><i class="fa fa-remove-o" aria-hidden="true"></i>Only standard email address.</span>
+          <span *ngIf="form.controls['email'].errors?.pattern"><i class="fa fa-remove-o" aria-hidden="true"></i>Invalid format.</span>
+        </span>
+        <label class="col-12">
+					<input type="text" name="inputEmail" #email formControlName="email" placeholder="Email Address" autocomplete="off" (focus)="onControlFocus()" required />
+          <div class="input-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+				</label>
+      </div>
+      <div class="row form-group">
+        <span *ngIf="!form.controls['loginName'].touched || form.controls['loginName'].valid" class="text-info">Only alphabets and numerics. Length 6-11 characters.</span>
+        <span *ngIf="form.controls['loginName'].touched && form.controls['loginName'].valid" class="text-success"></span>
+        <span *ngIf="form.controls['loginName'].touched && form.controls['loginName'].invalid" class="text-danger">
+          <span *ngIf="form.controls['loginName'].errors?.required"><i class="fa fa-remove" aria-hidden="true"></i>Only alphabets and numerics. Length 6-11 characters.</span>
+          <span *ngIf="form.controls['loginName'].errors?.pattern"><i class="fa fa-remove" aria-hidden="true"></i>Invalid characters found.</span>
+          <span *ngIf="form.controls['loginName'].errors?.minlength || form.controls['loginName'].errors?.maxlength"><i class="fa fa-remove" aria-hidden="true"></i>Length 6-11 characters.</span>
+        </span>
+        <label class="col-12">
+					<input type="text" name="inputLoginName" #loginName formControlName="loginName" placeholder="Choose any Login Name" autocomplete="off" required />
+          <div class="input-icon"><i class="fa fa-user-md" aria-hidden="true"></i></div>
+				</label>
+      </div>
+      <div class="row form-group">
+        <span *ngIf="!form.controls['password'].touched || form.controls['password'].valid" class="text-info">Alphanumeric and special chars. Length 6-11 characters.</span>
+        <span *ngIf="form.controls['password'].touched || form.controls['password'].valid" class="text-success"></span>
+        <span *ngIf="form.controls['password'].touched && form.controls['password'].invalid" class="text-danger">
+          <span *ngIf="passwordRetype.errors || password.errors?.mismatch"><i class="fa fa-remove" aria-hidden="true"></i>Must match with Re-type Password field. Length 6-11 characters.</span>
+        </span>
+        <label class="col-12">
+					<input type="password" name="inputPassword" #password formControlName="password" placeholder="Password" autocomplete="off" (focus)="onControlFocus()" required />
+          <div class="input-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
+				</label>
+      </div>
+      <div class="row form-group">
+        <span *ngIf="!passwordRetype.touched || passwordRetype.valid" class="text-info">Must match with Password field.</span>
+        <span *ngIf="(passwordRetype.touched || passwordRetype.valid) && !password.errors?.mismatch" class="text-success"></span>
+        <span *ngIf="passwordRetype.touched && passwordRetype.invalid" class="text-danger">
+          <span *ngIf="passwordRetype.errors"><i class="fa fa-remove" aria-hidden="true"></i>Did not match with Password field.</span>
+        </span>
+        <label class="col-12">
+					<input type="password" name="retypePassword" #retypePassword formControlName="passwordRetype" placeholder="Re-type Password" autocomplete="off" (focus)="onControlFocus()" required />
+          <div class="input-icon"><i class="fa fa-repeat" aria-hidden="true"></i></div>
+				</label>
+      </div>
+      <button type="submit" [disabled]="!form.valid" #registerMe (click)="register(username.value, email.value, loginName.value, password.value)" class="col-5 btn btn-primary">Register Me</button>
+    </div>
+  </form>
+</div>
